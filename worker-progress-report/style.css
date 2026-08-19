@@ -17,18 +17,36 @@
   box-sizing: border-box;
 }
 
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  padding: 0 0.25rem;
+  margin-left: 0.5rem;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   color: #1a1a1a;
   background: #e9e9ec;
   line-height: 1.35;
 }
 
 h1, h2 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   margin: 0;
+}
+
+h2 {
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 0.2rem;
 }
 
 a {
@@ -85,9 +103,9 @@ a {
 
 .brand {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
 }
 
 .logo {
@@ -107,11 +125,9 @@ a {
 }
 
 .title-block h1 {
-  font-size: 1.65rem;
-  font-weight: bold;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 4px;
 }
 
 .claim-row {
@@ -153,28 +169,28 @@ a {
 /* ---------------------------- 4. Form controls ----------------------------- */
 
 .form-section {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-section h2 {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: normal;
   margin-bottom: 0.6rem;
 }
 
 .checkbox-grid {
   border: 1px solid #1a1a1a;
-  padding: 0.4rem 0.5rem 0.5rem;
-  margin: 0 0 0.5rem;
+  padding: 0.5rem;
+  margin: 0.4rem 0;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 
-.checkbox-grid.four-col,
-.checkbox-grid.two-col {
+.grid-2-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.3rem 1rem;
+  gap: 0.5rem;
 }
 
 .checkbox-grid legend {
@@ -192,11 +208,11 @@ a {
 .checkbox-line input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   border: 1px solid #1a1a1a;
   border-radius: 0;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
   position: relative;
   background-color: #fff;
   cursor: pointer;
@@ -209,7 +225,7 @@ a {
   content: "✓";
   position: absolute;
   top: -3px;
-  left: 2px;
+  left: 1px;
   font-size: 15px;
   font-weight: bold;
   color: #1a1a1a;
@@ -285,6 +301,14 @@ a {
   min-height: 2rem;
 }
 
+.freeform-box.box-med {
+  min-height: 60px;
+}
+
+.freeform-box.box-tall {
+  min-height: 120px;
+}
+
 .freeform-label {
   margin: 0 0 0.35rem;
   font-size: 0.85rem;
@@ -307,6 +331,7 @@ a {
 .pain-scale {
   display: grid;
   grid-template-columns: repeat(5, auto);
+  grid-template-rows: auto auto;
   justify-content: start;
   gap: 0.6rem 2rem;
   margin-top: 0.5rem;

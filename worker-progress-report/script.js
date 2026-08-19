@@ -73,7 +73,7 @@ function renderHeader(data) {
 function renderFooters(data) {
   setText("footer-app-id", data.meta.workerAppId);
   setText("footer-submitted", data.meta.submitted);
-  setText("footer-page-total", "2");
+  setText("footer-page-total", "3");
 }
 
 function renderReturnToWork(data) {

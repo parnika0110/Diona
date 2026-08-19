@@ -56,7 +56,7 @@
     <section class="form-section">
       <h2>Return to Work</h2>
 
-      <fieldset class="checkbox-grid" id="rtw-status-group">
+      <fieldset class="checkbox-grid">
         <legend>Select one:</legend>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-missed" />
@@ -76,19 +76,25 @@
         </label>
       </fieldset>
 
-      <fieldset class="checkbox-grid two-col" id="working-arrangement-group">
+      <fieldset class="checkbox-grid">
         <legend>I am working:</legend>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-regular" /> Full duties, regular hours</label>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-reduced" /> Full duties, reduced hours</label>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-mod-regular" /> Modified duties, regular hours</label>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-mod-reduced" /> Modified duties, reduced hours</label>
-        <label class="checkbox-line other-line">
-          <input type="checkbox" disabled id="cb-working-other" /> Other:
-          <span class="fill-line long" id="working-other-text"><!-- injected --></span>
-        </label>
+        <div style="display: flex; gap: 2rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
+            <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-duties" /> Full duties, regular hours</label>
+            <label class="checkbox-line"><input type="checkbox" disabled id="cb-modified-duties-regular" /> Modified duties, regular hours</label>
+            <label class="checkbox-line other-line">
+              <input type="checkbox" disabled id="cb-other" />
+              <span>Other: <span class="fill-line" style="min-width: 200px;" id="other-desc"><!-- injected --></span></span>
+            </label>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
+            <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-duties-reduced" /> Full duties, reduced hours</label>
+            <label class="checkbox-line"><input type="checkbox" disabled id="cb-modified-duties-reduced" /> Modified duties, reduced hours</label>
+          </div>
+        </div>
       </fieldset>
 
-      <div class="freeform-box">
+      <div class="freeform-box box-med">
         <p class="freeform-label">My return to work is going:</p>
         <p class="freeform-value" id="how-its-going"><!-- injected --></p>
       </div>
@@ -101,7 +107,7 @@
         </span>
       </p>
 
-      <div class="freeform-box">
+      <div class="freeform-box box-tall">
         <p class="freeform-label">I have the following concerns about returning to work:</p>
         <p class="freeform-value" id="concerns"><!-- injected --></p>
       </div>
@@ -123,13 +129,13 @@
     <!-- ---------------- RECOVERY ---------------- -->
     <section class="form-section">
       <h2>Recovery</h2>
-      <fieldset class="checkbox-grid" id="recovery-status-group">
+      <fieldset class="checkbox-grid">
         <legend>Select one:</legend>
         <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-recovered" /> I have not fully recovered from my workplace injury.</label>
         <label class="checkbox-line"><input type="checkbox" disabled id="cb-fully-recovered" /> I have fully recovered from my workplace injury.</label>
       </fieldset>
 
-      <div class="freeform-box">
+      <div class="freeform-box box-tall">
         <p class="freeform-label">I have provided the following comments about my recovery:</p>
         <p class="freeform-value" id="recovery-comments"><!-- injected --></p>
       </div>
@@ -150,7 +156,7 @@
 
     <!-- ---------------- PAIN SCALE ---------------- -->
     <section class="form-section">
-      <h2>I rate my current pain/discomfort on a scale of 1-10, where 1 is no pain and 10 is severe pain out of 10.</h2>
+      <p style="font-size: 1rem; margin: 0 0 0.5rem 0;">I rate my current pain/discomfort on a scale of 1-10, <br/>where 1 is no pain and 10 is severe pain out of 10.</p>
       <div class="pain-scale" id="pain-scale">
         <!-- ten numbered boxes injected here; the matching value gets a
              "selected" class driven entirely by data.js -->
@@ -159,7 +165,7 @@
 
     <!-- ---------------- MEDICAL TREATMENT ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid" id="treatment-status-group">
+      <fieldset class="checkbox-grid">
         <legend>Select one:</legend>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-continuing-treatment" />
@@ -196,19 +202,18 @@
         </span>
       </p>
 
-      <label class="checkbox-line">
-        <input type="checkbox" disabled id="cb-chiro-physio" />
+      <p class="field-line">
         I am attending a Chiropractor or Physiotherapist
         <span class="inline-field">
-          <span class="fill-line" id="treatment-frequency"><!-- injected --></span>
+          <span class="fill-line" style="min-width: 250px;" id="treatment-frequency"><!-- injected --></span>
           <span class="field-caption">(Frequency)</span>
         </span>
-      </label>
+      </p>
     </section>
 
     <!-- ---------------- MEDICATION ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid" id="medication-status-group">
+      <fieldset class="checkbox-grid">
         <legend>Select one:</legend>
         <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-taking-medication" /> I am not taking medication for my workplace injury.</label>
         <label class="checkbox-line">
@@ -224,12 +229,12 @@
 
     <!-- ---------------- HOME EXERCISES ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid" id="exercise-status-group">
+      <fieldset class="checkbox-grid">
         <legend>Select one:</legend>
         <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-doing-exercises" /> I am not doing home exercises for my workplace injury.</label>
         <label class="checkbox-line"><input type="checkbox" disabled id="cb-doing-exercises" /> I am doing home exercises for my workplace injury.</label>
       </fieldset>
-      <div class="freeform-box">
+      <div class="freeform-box box-tall">
         <p class="freeform-label">List the exercises you are doing:</p>
         <p class="freeform-value" id="exercises-list"><!-- injected --></p>
       </div>
@@ -238,13 +243,23 @@
     <!-- ---------------- OTHER INFORMATION ---------------- -->
     <section class="form-section">
       <h2>Other Information</h2>
-      <div class="freeform-box">
+      <div class="freeform-box box-tall">
         <p class="freeform-label">I would like to provide the following additional information about my claim/injury:</p>
         <p class="freeform-value" id="other-information"><!-- injected --></p>
       </div>
     </section>
 
-    <!-- ---------------- CERTIFICATION (Moved from Page 3) ---------------- -->
+    <footer class="doc-footer">
+      <span>Worker App ID: <span class="footer-app-id"><!-- injected --></span></span>
+      <span class="footer-center">Page 2 of <span class="footer-page-total"><!-- injected --></span></span>
+      <span class="footer-right">Submitted: <span class="footer-submitted"><!-- injected --></span></span>
+    </footer>
+  </main>
+
+  <!-- ===================================================================
+       PAGE 3 — certification + privacy acknowledgement
+  ==================================================================== -->
+  <main id="page-3" class="page">
     <section class="form-section certification-section">
       <p class="certification-text">
         I certify that the information given on this form is true, correct and complete to the
@@ -271,7 +286,7 @@
 
     <footer class="doc-footer">
       <span>Worker App ID: <span class="footer-app-id"><!-- injected --></span></span>
-      <span class="footer-center">Page 2 of <span class="footer-page-total"><!-- injected --></span></span>
+      <span class="footer-center">Page 3 of <span class="footer-page-total"><!-- injected --></span></span>
       <span class="footer-right">Submitted: <span class="footer-submitted"><!-- injected --></span></span>
     </footer>
   </main>
