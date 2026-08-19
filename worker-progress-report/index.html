@@ -56,42 +56,48 @@
     <section class="form-section">
       <h2>Return to Work</h2>
 
-      <fieldset class="checkbox-grid">
+      <fieldset class="checkbox-grid" style="display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 0.5rem;">
         <legend>Select one:</legend>
-        <label class="checkbox-line">
+        <label class="checkbox-line" style="align-items: flex-start;">
           <input type="checkbox" disabled id="cb-not-missed" />
-          I have not missed time from work
+          <span style="display: inline-block;">I have not missed<br/>time from work</span>
+        </label>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-not-returned" />
+          <span style="display: inline-block;">I have not returned<br/>to work</span>
         </label>
         <label class="checkbox-line">
-          <input type="checkbox" disabled id="cb-not-returned" />
-          I have not returned to work
-        </label>
-        <label class="checkbox-line inline-date">
           <input type="checkbox" disabled id="cb-returned-on" />
           I returned to work on:
           <span class="inline-field">
-            <span class="fill-line" id="returned-on-date"><!-- injected --></span>
+            <span class="fill-line short" id="returned-on-date"><!-- injected --></span>
             <span class="field-caption">Date</span>
           </span>
         </label>
       </fieldset>
 
-      <fieldset class="checkbox-grid">
+      <fieldset class="checkbox-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem 0.5rem;">
         <legend>I am working:</legend>
-        <div style="display: flex; gap: 2rem;">
-          <div style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
-            <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-duties" /> Full duties, regular hours</label>
-            <label class="checkbox-line"><input type="checkbox" disabled id="cb-modified-duties-regular" /> Modified duties, regular hours</label>
-            <label class="checkbox-line other-line">
-              <input type="checkbox" disabled id="cb-other" />
-              <span>Other: <span class="fill-line" style="min-width: 200px;" id="other-desc"><!-- injected --></span></span>
-            </label>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
-            <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-duties-reduced" /> Full duties, reduced hours</label>
-            <label class="checkbox-line"><input type="checkbox" disabled id="cb-modified-duties-reduced" /> Modified duties, reduced hours</label>
-          </div>
-        </div>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-full-duties" />
+          <span style="display: inline-block;">Full duties, regular<br/>hours</span>
+        </label>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-full-duties-reduced" />
+          <span style="display: inline-block;">Full duties, reduced<br/>hours</span>
+        </label>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-modified-duties-regular" />
+          <span style="display: inline-block;">Modified duties,<br/>regular hours</span>
+        </label>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-modified-duties-reduced" />
+          <span style="display: inline-block;">Modified duties,<br/>reduced hours</span>
+        </label>
+        <label class="checkbox-line other-line" style="grid-column: 1 / -1; margin-top: 0.5rem;">
+          <input type="checkbox" disabled id="cb-other" />
+          <span>Other: <span class="fill-line" style="min-width: 300px;" id="other-desc"><!-- injected --></span></span>
+        </label>
       </fieldset>
 
       <div class="freeform-box box-med">
@@ -129,10 +135,16 @@
     <!-- ---------------- RECOVERY ---------------- -->
     <section class="form-section">
       <h2>Recovery</h2>
-      <fieldset class="checkbox-grid">
+      <fieldset class="checkbox-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
         <legend>Select one:</legend>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-recovered" /> I have not fully recovered from my workplace injury.</label>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-fully-recovered" /> I have fully recovered from my workplace injury.</label>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-not-recovered" />
+          <span style="display: inline-block;">I have not fully recovered from my workplace<br/>injury.</span>
+        </label>
+        <label class="checkbox-line" style="align-items: flex-start;">
+          <input type="checkbox" disabled id="cb-fully-recovered" />
+          <span style="display: inline-block;">I have fully recovered from my workplace<br/>injury.</span>
+        </label>
       </fieldset>
 
       <div class="freeform-box box-tall">

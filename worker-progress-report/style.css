@@ -126,7 +126,7 @@ a {
 
 .title-block h1 {
   font-size: 1.5rem;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 4px;
 }
 
@@ -174,7 +174,7 @@ a {
 
 .form-section h2 {
   font-size: 1.2rem;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 0.6rem;
 }
 
