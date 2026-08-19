@@ -20,14 +20,14 @@ const SAMPLE_A = {
   meta: {
     claimNo: "20042047",
     formTag: "WP",
-    workerName: "Madeleine Willson",
+    workerName: "Parnika S M",
     workerAppId: "712041",
     submitted: "March 19, 2024 19:21",
   },
 
   returnToWork: {
     // exactly one of these keys should be true: notMissedTime | notReturned | returnedOn
-    status: "returnedOn",
+    status: "notReturned",
     returnedOnDate: "March 15, 2024",
     // working arrangement: fullRegular | fullReduced | modifiedRegular | modifiedReduced | other
     workingArrangement: "modifiedReduced",
@@ -41,13 +41,13 @@ const SAMPLE_A = {
 
   recovery: {
     // fullyRecovered | notFullyRecovered
-    status: "fullyRecovered",
+    status: "notFullyRecovered",
     comments: "",
   },
 
   painScale: {
     // integer 1-10, or null if not answered
-    value: null,
+    value: 6,
   },
 
   medicalTreatment: {
