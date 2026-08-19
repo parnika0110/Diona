@@ -56,8 +56,8 @@
     <section class="form-section">
       <h2>Return to Work</h2>
 
-      <fieldset class="checkbox-grid" style="display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 0.5rem;">
-        <legend>Select one:</legend>
+      <div class="checkbox-grid" style="display: grid; grid-template-columns: 1fr 1fr 1.5fr; gap: 0.5rem; border: 2px solid #1a1a1a;">
+        <div class="legend-text" style="font-size: 0.75rem; grid-column: 1 / -1;">Select one:</div>
         <label class="checkbox-line" style="align-items: flex-start;">
           <input type="checkbox" disabled id="cb-not-missed" />
           <span style="display: inline-block;">I have not missed<br/>time from work</span>
@@ -74,10 +74,10 @@
             <span class="field-caption">Date</span>
           </span>
         </label>
-      </fieldset>
+      </div>
 
-      <fieldset class="checkbox-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem 0.5rem;">
-        <legend>I am working:</legend>
+      <div class="checkbox-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem 0.5rem; border: 2px solid #1a1a1a;">
+        <div class="legend-text" style="font-size: 0.75rem; grid-column: 1 / -1; margin-bottom: -0.5rem;">I am working:</div>
         <label class="checkbox-line" style="align-items: flex-start;">
           <input type="checkbox" disabled id="cb-full-duties" />
           <span style="display: inline-block;">Full duties, regular<br/>hours</span>
@@ -98,7 +98,7 @@
           <input type="checkbox" disabled id="cb-other" />
           <span>Other: <span class="fill-line" style="min-width: 300px;" id="other-desc"><!-- injected --></span></span>
         </label>
-      </fieldset>
+      </div>
 
       <div class="freeform-box box-med">
         <p class="freeform-label">My return to work is going:</p>
@@ -135,8 +135,8 @@
     <!-- ---------------- RECOVERY ---------------- -->
     <section class="form-section">
       <h2>Recovery</h2>
-      <fieldset class="checkbox-grid grid-2-col">
-        <legend>Select one:</legend>
+      <div class="checkbox-grid grid-2-col" style="border: 2px solid #1a1a1a;">
+        <div class="legend-text" style="font-size: 0.75rem; grid-column: 1 / -1;">Select one:</div>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-recovered" />
           <span>I have not fully recovered from my workplace injury.</span>
@@ -145,7 +145,7 @@
           <input type="checkbox" disabled id="cb-fully-recovered" />
           <span>I have fully recovered from my workplace injury.</span>
         </label>
-      </fieldset>
+      </div>
 
       <div class="freeform-box box-tall">
         <p class="freeform-label">I have provided the following comments about my recovery:</p>
@@ -167,9 +167,9 @@
   <main id="page-2" class="page">
 
     <!-- ---------------- PAIN SCALE ---------------- -->
-    <section class="form-section">
-      <p style="font-size: 1rem; margin: 0 0 0.5rem 0;">I rate my current pain/discomfort on a scale of 1-10, <br/>where 1 is no pain and 10 is severe pain out of 10.</p>
-      <div class="pain-scale" id="pain-scale">
+    <section class="form-section" style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.5rem;">
+      <p style="font-size: 1rem; margin: 0; flex: 1;">I rate my current pain/discomfort on a scale of 1-10, <br/>where 1 is no pain and 10 is severe pain out of 10.</p>
+      <div class="pain-scale" id="pain-scale" style="flex: 1.2; margin-top: 0;">
         <!-- ten numbered boxes injected here; the matching value gets a
              "selected" class driven entirely by data.js -->
       </div>
@@ -177,8 +177,8 @@
 
     <!-- ---------------- MEDICAL TREATMENT ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid grid-2-col">
-        <legend>Select one:</legend>
+      <div class="checkbox-grid grid-2-col" style="border: 2px solid #1a1a1a;">
+        <div class="legend-text" style="font-size: 0.75rem; grid-column: 1 / -1;">Select one:</div>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-continuing-treatment" />
           <span>I am not continuing to receive medical treatment for my workplace injury.</span>
@@ -193,7 +193,7 @@
             </span>
           </span>
         </label>
-      </fieldset>
+      </div>
 
       <p class="field-line">
         My last medical treatment was
@@ -232,8 +232,8 @@
 
     <!-- ---------------- MEDICATION ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid grid-2-col">
-        <legend>Select one:</legend>
+      <div class="checkbox-grid grid-2-col" style="border: 2px solid #1a1a1a;">
+        <div class="legend-text" style="font-size: 0.75rem; grid-column: 1 / -1;">Select one:</div>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-taking-medication" />
           <span>I am not taking medication for my workplace injury.</span>
@@ -248,13 +248,13 @@
             </span>
           </span>
         </label>
-      </fieldset>
+      </div>
     </section>
 
     <!-- ---------------- HOME EXERCISES ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid grid-2-col">
-        <legend>Select one:</legend>
+      <div class="checkbox-grid grid-2-col" style="border: 2px solid #1a1a1a;">
+        <div class="legend-text" style="font-size: 0.75rem; grid-column: 1 / -1;">Select one:</div>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-doing-exercises" />
           <span>I am not doing home exercises for my workplace injury.</span>
@@ -263,7 +263,7 @@
           <input type="checkbox" disabled id="cb-doing-exercises" />
           <span>I am doing home exercises for my workplace injury.</span>
         </label>
-      </fieldset>
+      </div>
       <div class="freeform-box box-tall">
         <p class="freeform-label">List the exercises you are doing:</p>
         <p class="freeform-value" id="exercises-list"><!-- injected --></p>
