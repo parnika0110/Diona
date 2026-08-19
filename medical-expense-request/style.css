@@ -1,0 +1,375 @@
+/* =============================================================================
+   style.css — Medical & Travel Expense Request
+   =============================================================================
+   Organized into:
+     1. Reset / base + typography scale (matches PDF hierarchy)
+     2. Layout shell (page + demo toolbar)
+     3. Header / claim box (3-column, tight, matches PDF)
+     4. Tables (dark uniform borders, full width)
+     5. Footer
+     6. Responsive rules
+     7. Print rules (A4, pagination matching the PDF)
+============================================================================= */
+
+/* ---------------------- 1. Reset / base / typography ----------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Georgia", "Times New Roman", serif;
+  color: #111;
+  background: #dfe0e3;
+  line-height: 1.35;
+  font-size: 13px; /* body text baseline — slightly smaller than headings */
+}
+
+h1, h2 {
+  font-family: "Georgia", "Times New Roman", serif;
+  margin: 0;
+}
+
+a {
+  color: #2b4d8f;
+}
+
+/* ---------------------------- 2. Layout shell ----------------------------- */
+
+.demo-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: #22252b;
+  color: #fff;
+  padding: 0.55rem 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+}
+
+.toolbar-label {
+  margin-right: 0.25rem;
+  opacity: 0.85;
+}
+
+.demo-toolbar button {
+  cursor: pointer;
+  border: 1px solid #565a63;
+  background: #33363d;
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: system-ui, sans-serif;
+}
+
+.demo-toolbar button:hover {
+  background: #454952;
+}
+
+.demo-toolbar button.active {
+  background: #2b4d8f;
+  border-color: #2b4d8f;
+}
+
+.demo-toolbar button.print-btn {
+  margin-left: auto;
+  background: #b4131f;
+  border-color: #b4131f;
+}
+
+.demo-toolbar button.print-btn:hover {
+  background: #91101a;
+}
+
+/* The "page" mimics a printed A4 sheet on screen: 794×1123px @ 96dpi */
+.page {
+  width: 794px;
+  min-height: 1123px;
+  margin: 1.25rem auto;
+  background: #fff;
+  padding: 15mm 16mm;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------- 3. Header ----------------------------------- */
+
+/* Tight 3-column grid: logo | address | title+claim box — matches the
+   PDF's single-row header exactly, minimal vertical whitespace. */
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.brand {
+  flex: 0 0 auto;
+}
+
+.header-right {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.org-address {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  padding-top: 0.1rem;
+}
+
+.title-block {
+  text-align: left;
+}
+
+.title-block h1 {
+  font-size: 1.05rem;
+  font-weight: bold;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.claim-box {
+  display: inline-block;
+  border: 1px solid #111;
+  padding: 0.28rem 0.6rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.intro-line {
+  margin: 0 0 0.9rem;
+}
+
+.worker-name {
+  color: #2b4d8f;
+  font-weight: bold;
+}
+
+/* ---------------------------- 4. Tables ------------------------------------ */
+
+.form-section {
+  margin-bottom: 1.1rem;
+}
+
+/* Section titles: larger + bolder than body text, matching PDF hierarchy */
+.form-section h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+
+.section-note {
+  font-size: 0.76rem;
+  margin: 0 0 0.4rem;
+  color: #222;
+}
+
+.asterisk {
+  color: #111;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #111; /* uniform dark border thickness everywhere */
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+  word-wrap: break-word;
+}
+
+.data-table thead th {
+  background: #fff;
+  font-weight: bold;
+  font-size: 0.78rem;
+}
+
+/* Data cells filled from data.js render in blue, exactly as in the PDF */
+.data-table td.value {
+  color: #2b4d8f;
+}
+
+/* Empty-state row shown when a section has 0 records */
+.empty-row td {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+  padding: 0.5rem;
+  border: 1px solid #111;
+}
+
+.keep-together {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.privacy-section hr {
+  border: none;
+  border-top: 1px solid #999;
+  margin: 0.9rem 0;
+}
+
+.checkbox-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.checkbox-line input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #111;
+  border-radius: 0;
+  margin-top: 0.15rem;
+  position: relative;
+  background-color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-line input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: -2px;
+  left: 1px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+/* Fills remaining vertical space on page 2 so the footer sits at the
+   bottom of the sheet, matching the PDF's large trailing whitespace */
+.page2-spacer {
+  flex: 1 1 auto;
+}
+
+/* ---------------------------- 5. Footer ------------------------------------ */
+
+.doc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+}
+
+.doc-footer .value {
+  color: #2b4d8f;
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  text-align: right;
+}
+
+.footer-page {
+  font-weight: bold;
+}
+
+/* ---------------------------- 6. Responsive -------------------------------- */
+
+@media (max-width: 860px) {
+  .page {
+    width: 100%;
+    min-height: auto;
+    padding: 1.25rem 1rem;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .doc-header {
+    grid-template-columns: 1fr;
+    row-gap: 0.5rem;
+  }
+
+  .title-block {
+    text-align: left;
+  }
+
+  .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .data-table th,
+  .data-table td {
+    white-space: normal;
+  }
+}
+
+/* ---------------------------- 7. Print styles ------------------------------ */
+
+@media print {
+  body {
+    background: #fff;
+    font-size: 12px;
+  }
+
+  .no-print,
+  .demo-toolbar {
+    display: none !important;
+  }
+
+  .page {
+    box-shadow: none;
+    margin: 0;
+    width: auto;
+    padding: 0;
+    break-after: page;
+  }
+
+  .page:last-of-type {
+    break-after: auto;
+  }
+
+  /* Avoid splitting a table row, section, or the mileage block across a
+     page break wherever the browser can honor it */
+  .form-section,
+  .keep-together,
+  .data-table tr,
+  .doc-header,
+  .doc-footer {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Repeat table headers on every printed page */
+  .data-table thead {
+    display: table-header-group;
+  }
+
+  @page {
+    size: A4;
+    margin: 15mm 16mm;
+  }
+}

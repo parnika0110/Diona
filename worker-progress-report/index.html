@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Worker Progress Report</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================================================================
+       DEMO TOOLBAR (non-printing)
+  ==================================================================== -->
+  <div class="demo-toolbar no-print">
+    <span>Sample dataset:</span>
+    <button id="btn-a">Sample A (small)</button>
+    <button id="btn-b">Sample B (large)</button>
+    <button id="btn-empty">Empty</button>
+    <button id="btn-print">Print / Save PDF</button>
+  </div>
+
+  <!-- ===================================================================
+       PAGE 1
+  ==================================================================== -->
+  <main id="page-1" class="page">
+
+    <!-- ---------------- HEADER ---------------- -->
+    <header class="doc-header">
+      <div class="brand">
+        <!-- Official WCB of Manitoba logo (contains its own wordmark) -->
+        <img class="logo" src="assets/logo.svg" alt="Workers Compensation Board of Manitoba logo" />
+        <div class="org-address">
+          333 Broadway<br />
+          Winnipeg, MB R3C 4W3<br />
+          Phone: (204) 954-4321<br />
+          Toll Free: 1-855-954-4321<br />
+          wcb.mb.ca
+        </div>
+      </div>
+
+      <div class="title-block">
+        <h1>Worker Progress Report</h1>
+        <div class="claim-row">
+          <div class="claim-box">Claim No. <span id="claim-no"><!-- injected --></span></div>
+          <div class="tag-box" id="form-tag"><!-- injected --></div>
+        </div>
+      </div>
+    </header>
+
+    <p class="intro-line">
+      <span id="worker-name" class="worker-name"><!-- injected --></span>
+      provided the following updates in relation to their claim:
+    </p>
+
+    <!-- ---------------- RETURN TO WORK ---------------- -->
+    <section class="form-section">
+      <h2>Return to Work</h2>
+
+      <fieldset class="checkbox-grid" id="rtw-status-group">
+        <legend>Select one:</legend>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-not-missed" />
+          I have not missed time from work
+        </label>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-not-returned" />
+          I have not returned to work
+        </label>
+        <label class="checkbox-line inline-date">
+          <input type="checkbox" disabled id="cb-returned-on" />
+          I returned to work on:
+          <span class="inline-field">
+            <span class="fill-line" id="returned-on-date"><!-- injected --></span>
+            <span class="field-caption">Date</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <fieldset class="checkbox-grid two-col" id="working-arrangement-group">
+        <legend>I am working:</legend>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-regular" /> Full duties, regular hours</label>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-full-reduced" /> Full duties, reduced hours</label>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-mod-regular" /> Modified duties, regular hours</label>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-mod-reduced" /> Modified duties, reduced hours</label>
+        <label class="checkbox-line other-line">
+          <input type="checkbox" disabled id="cb-working-other" /> Other:
+          <span class="fill-line long" id="working-other-text"><!-- injected --></span>
+        </label>
+      </fieldset>
+
+      <div class="freeform-box">
+        <p class="freeform-label">My return to work is going:</p>
+        <p class="freeform-value" id="how-its-going"><!-- injected --></p>
+      </div>
+
+      <p class="field-line">
+        I expect to return to work on:
+        <span class="inline-field">
+          <span class="fill-line" id="expected-return-date"><!-- injected --></span>
+          <span class="field-caption">Date</span>
+        </span>
+      </p>
+
+      <div class="freeform-box">
+        <p class="freeform-label">I have the following concerns about returning to work:</p>
+        <p class="freeform-value" id="concerns"><!-- injected --></p>
+      </div>
+
+      <p class="field-line">
+        I was most recently in contact with:
+        <span class="inline-field">
+          <span class="fill-line" id="last-contact-name"><!-- injected --></span>
+          <span class="field-caption">(Name of employer contact)</span>
+        </span>
+        on
+        <span class="inline-field">
+          <span class="fill-line short" id="last-contact-date"><!-- injected --></span>
+          <span class="field-caption">Date</span>
+        </span>
+      </p>
+    </section>
+
+    <!-- ---------------- RECOVERY ---------------- -->
+    <section class="form-section">
+      <h2>Recovery</h2>
+      <fieldset class="checkbox-grid" id="recovery-status-group">
+        <legend>Select one:</legend>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-recovered" /> I have not fully recovered from my workplace injury.</label>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-fully-recovered" /> I have fully recovered from my workplace injury.</label>
+      </fieldset>
+
+      <div class="freeform-box">
+        <p class="freeform-label">I have provided the following comments about my recovery:</p>
+        <p class="freeform-value" id="recovery-comments"><!-- injected --></p>
+      </div>
+    </section>
+
+    <!-- ---------------- FOOTER PAGE 1 ---------------- -->
+    <footer class="doc-footer">
+      <span>Worker App ID: <span class="footer-app-id"><!-- injected --></span></span>
+      <span class="footer-center">Page 1 of <span class="footer-page-total"><!-- injected --></span></span>
+      <span class="footer-right">Submitted: <span class="footer-submitted"><!-- injected --></span></span>
+    </footer>
+  </main>
+
+  <!-- ===================================================================
+       PAGE 2
+  ==================================================================== -->
+  <main id="page-2" class="page">
+
+    <!-- ---------------- PAIN SCALE ---------------- -->
+    <section class="form-section">
+      <h2>I rate my current pain/discomfort on a scale of 1-10, where 1 is no pain and 10 is severe pain out of 10.</h2>
+      <div class="pain-scale" id="pain-scale">
+        <!-- ten numbered boxes injected here; the matching value gets a
+             "selected" class driven entirely by data.js -->
+      </div>
+    </section>
+
+    <!-- ---------------- MEDICAL TREATMENT ---------------- -->
+    <section class="form-section">
+      <fieldset class="checkbox-grid" id="treatment-status-group">
+        <legend>Select one:</legend>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-not-continuing-treatment" />
+          I am not continuing to receive medical treatment for my workplace injury.
+        </label>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-continuing-treatment" />
+          I am continuing to receive medical treatment for my workplace injury from:
+          <span class="inline-field">
+            <span class="fill-line long" id="provider-type"><!-- injected --></span>
+            <span class="field-caption">(Medical Provider Type)</span>
+          </span>
+        </label>
+      </fieldset>
+
+      <p class="field-line">
+        My last medical treatment was
+        <span class="inline-field">
+          <span class="fill-line short" id="last-treatment-date"><!-- injected --></span>
+          <span class="field-caption">Date</span>
+        </span>
+        from
+        <span class="inline-field">
+          <span class="fill-line long" id="last-treatment-provider"><!-- injected --></span>
+          <span class="field-caption">(Medical Provider Name)</span>
+        </span>
+      </p>
+
+      <p class="field-line">
+        My next medical treatment is
+        <span class="inline-field">
+          <span class="fill-line short" id="next-treatment-date"><!-- injected --></span>
+          <span class="field-caption">Date</span>
+        </span>
+      </p>
+
+      <label class="checkbox-line">
+        <input type="checkbox" disabled id="cb-chiro-physio" />
+        I am attending a Chiropractor or Physiotherapist
+        <span class="inline-field">
+          <span class="fill-line" id="treatment-frequency"><!-- injected --></span>
+          <span class="field-caption">(Frequency)</span>
+        </span>
+      </label>
+    </section>
+
+    <!-- ---------------- MEDICATION ---------------- -->
+    <section class="form-section">
+      <fieldset class="checkbox-grid" id="medication-status-group">
+        <legend>Select one:</legend>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-taking-medication" /> I am not taking medication for my workplace injury.</label>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-taking-medication" />
+          I am taking medication for my workplace injury:
+          <span class="inline-field">
+            <span class="fill-line long" id="medication-name"><!-- injected --></span>
+            <span class="field-caption">(Name of prescribed medication)</span>
+          </span>
+        </label>
+      </fieldset>
+    </section>
+
+    <!-- ---------------- HOME EXERCISES ---------------- -->
+    <section class="form-section">
+      <fieldset class="checkbox-grid" id="exercise-status-group">
+        <legend>Select one:</legend>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-doing-exercises" /> I am not doing home exercises for my workplace injury.</label>
+        <label class="checkbox-line"><input type="checkbox" disabled id="cb-doing-exercises" /> I am doing home exercises for my workplace injury.</label>
+      </fieldset>
+      <div class="freeform-box">
+        <p class="freeform-label">List the exercises you are doing:</p>
+        <p class="freeform-value" id="exercises-list"><!-- injected --></p>
+      </div>
+    </section>
+
+    <!-- ---------------- OTHER INFORMATION ---------------- -->
+    <section class="form-section">
+      <h2>Other Information</h2>
+      <div class="freeform-box">
+        <p class="freeform-label">I would like to provide the following additional information about my claim/injury:</p>
+        <p class="freeform-value" id="other-information"><!-- injected --></p>
+      </div>
+    </section>
+
+    <!-- ---------------- CERTIFICATION (Moved from Page 3) ---------------- -->
+    <section class="form-section certification-section">
+      <p class="certification-text">
+        I certify that the information given on this form is true, correct and complete to the
+        best of my knowledge. I agree to notify the Workers Compensation Board of Manitoba (WCB)
+        immediately once I return to any form of work and/or employment. I understand that it is
+        an offence to knowingly make a false statement to the WCB. I also understand that it is an
+        offence to withhold information from WCB which affects my entitlement to compensation
+        (e.g., full or partial recovery from injury, ability to return to work, sources of
+        additional income, etc.). I understand that refusing to co-operate with, or follow my
+        treatment, may result in the WCB reducing or suspending my benefits.
+      </p>
+
+      <label class="checkbox-line">
+        <input type="checkbox" disabled id="cb-certification" />
+        I certify that the information given on this form is true, correct and complete.
+      </label>
+
+      <label class="checkbox-line">
+        <input type="checkbox" disabled id="cb-privacy" />
+        <span>I understand that the <a href="#" onclick="return false;">Privacy Notice</a> applies to the
+        personal information collected in this document.</span>
+      </label>
+    </section>
+
+    <footer class="doc-footer">
+      <span>Worker App ID: <span class="footer-app-id"><!-- injected --></span></span>
+      <span class="footer-center">Page 2 of <span class="footer-page-total"><!-- injected --></span></span>
+      <span class="footer-right">Submitted: <span class="footer-submitted"><!-- injected --></span></span>
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

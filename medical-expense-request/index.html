@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical &amp; Travel Expense Request</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================================================================
+       DEMO TOOLBAR (non-printing)
+       Lets a reviewer switch between sample datasets without touching code.
+       Hidden entirely in print via CSS (.no-print).
+  ==================================================================== -->
+  <div class="demo-toolbar no-print">
+    <span class="toolbar-label">Sample dataset:</span>
+    <button id="btn-a" class="active">Sample A</button>
+    <button id="btn-b">Sample B</button>
+    <button id="btn-empty">Empty</button>
+    <button id="btn-print" class="print-btn">Print / Save PDF</button>
+  </div>
+
+  <!-- ===================================================================
+       PAGE 1
+       Header, intro line, and the first five sections. Matches the
+       reference PDF's page 1 content break (everything up to, but not
+       including, Bus/Taxi Fare).
+  ==================================================================== -->
+  <main id="page-1" class="page">
+
+    <!-- ---------------- HEADER ----------------
+         3-column grid: logo (far left) | org address (center-left) |
+         title + claim box (right), matching the PDF exactly. -->
+    <header class="doc-header">
+      <div class="brand">
+        <img class="logo" src="assets/logo.svg" alt="Workers Compensation Board of Manitoba logo" />
+      </div>
+
+      <div class="header-right">
+        <div class="org-address">
+          333 Broadway<br />
+          Winnipeg, MB R3C 4W3<br />
+          Phone: (204) 954-4321<br />
+          Toll Free: 1-855-954-4321<br />
+          wcb.mb.ca
+        </div>
+
+        <div class="title-block">
+          <h1>Medical &amp; Travel Expense<br />Request</h1>
+          <div class="claim-box">Claim No. <span id="claim-no"><!-- injected --></span></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ---------------- INTRO LINE ---------------- -->
+    <p class="intro-line">
+      <span id="worker-name" class="worker-name"><!-- injected --></span>
+      requested reimbursement for the following medical and/or travel expenses:
+    </p>
+
+    <!-- ---------------- SECTIONS (rows injected by JS) ---------------- -->
+    <!-- Each <section> below has a fixed heading + a table body target.
+         script.js renders <tbody> rows from data.js; markup here never
+         contains row-level data. -->
+
+    <section class="form-section" aria-labelledby="h-prescription">
+      <h2 id="h-prescription">Prescription Drugs</h2>
+      <table class="data-table" id="table-prescription">
+        <colgroup>
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 25%;">
+          <col style="width: 15%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Drug Name</th>
+            <th>Prescription Date</th>
+            <th>Date Purchased</th>
+            <th>Healthcare Provider Name</th>
+            <th>Paid Amount</th>
+          </tr>
+        </thead>
+        <tbody><!-- injected --></tbody>
+      </table>
+    </section>
+
+    <section class="form-section" aria-labelledby="h-otc">
+      <h2 id="h-otc">Over-the-Counter Drugs</h2>
+      <table class="data-table" id="table-otc">
+        <colgroup>
+          <col style="width: 20%;">
+          <col style="width: 20%;">
+          <col style="width: 15%;">
+          <col style="width: 20%;">
+          <col style="width: 25%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Drug Name</th>
+            <th>Date Purchased</th>
+            <th>Paid Amount</th>
+            <th>Seller's Name</th>
+            <th>Reason for Purchasing</th>
+          </tr>
+        </thead>
+        <tbody><!-- injected --></tbody>
+      </table>
+    </section>
+
+    <section class="form-section" aria-labelledby="h-supplies">
+      <h2 id="h-supplies">Bandages, Braces or Other Medical Supplies</h2>
+      <table class="data-table" id="table-supplies">
+        <colgroup>
+          <col style="width: 20%;">
+          <col style="width: 15%;">
+          <col style="width: 12%;">
+          <col style="width: 23%;">
+          <col style="width: 12%;">
+          <col style="width: 18%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Item Purchased</th>
+            <th>Date Purchased</th>
+            <th>Was this Prescribed?</th>
+            <th>Healthcare Provider Name</th>
+            <th>Paid Amount</th>
+            <th>Seller's Name</th>
+          </tr>
+        </thead>
+        <tbody><!-- injected --></tbody>
+      </table>
+    </section>
+
+    <section class="form-section" aria-labelledby="h-parking">
+      <h2 id="h-parking">Parking for Medical Appointments</h2>
+      <table class="data-table" id="table-parking">
+        <colgroup>
+          <col style="width: 45%;">
+          <col style="width: 15%;">
+          <col style="width: 15%;">
+          <col style="width: 10%;">
+          <col style="width: 15%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Address of Healthcare Provider/Medical Facility</th>
+            <th>Date</th>
+            <th>Paid Amount</th>
+            <th>Meter Used?</th>
+            <th>Meter Number</th>
+          </tr>
+        </thead>
+        <tbody><!-- injected --></tbody>
+      </table>
+    </section>
+
+    <!-- Mileage section: kept together on one page via CSS break-inside -->
+    <section class="form-section keep-together" aria-labelledby="h-mileage">
+      <h2 id="h-mileage">Mileage to Medical Appointments</h2>
+      <p class="section-note">
+        The WCB will generally reimburse only those transportation costs which are in
+        excess of costs that would be incurred by the worker while travelling to and from work.
+      </p>
+      <table class="data-table" id="table-mileage">
+        <colgroup>
+          <col style="width: 20%;">
+          <col style="width: 35%;">
+          <col style="width: 30%;">
+          <col style="width: 15%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Appointment Date</th>
+            <th>Address of Healthcare Provider/Medical Facility</th>
+            <th>Address of Workplace</th>
+            <th>Number of km (Round Trip)</th>
+          </tr>
+        </thead>
+        <tbody><!-- injected --></tbody>
+      </table>
+    </section>
+
+    <!-- ---------------- FOOTER — PAGE 1 ---------------- -->
+    <footer class="doc-footer">
+      <span class="footer-app-id">Worker App ID: <span class="value"><!-- injected --></span></span>
+      <span class="footer-right">
+        <span class="footer-submitted">Submitted: <span class="value"><!-- injected --></span></span>
+        <span class="footer-page">Page 1 of <span class="footer-page-total"><!-- injected --></span></span>
+      </span>
+    </footer>
+  </main>
+
+  <!-- ===================================================================
+       PAGE 2
+       Bus or Taxi Fare section + privacy acknowledgement, matching the
+       reference PDF's page 2 content break exactly.
+  ==================================================================== -->
+  <main id="page-2" class="page">
+
+    <section class="form-section keep-together" aria-labelledby="h-fares">
+      <h2 id="h-fares">Bus or Taxi Fare for Medical Appointments <span class="asterisk">*</span></h2>
+      <p class="section-note">*Note: Pre-approval is required from your WCB representative to claim taxi fare(s).</p>
+      <table class="data-table" id="table-fares">
+        <colgroup>
+          <col style="width: 15%;">
+          <col style="width: 30%;">
+          <col style="width: 30%;">
+          <col style="width: 15%;">
+          <col style="width: 10%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Appointment Date</th>
+            <th>Address of Starting Point</th>
+            <th>Address of Healthcare Provider/Medical Facility</th>
+            <th>Bus or Taxi (indicate one)</th>
+            <th>Total Fare Paid</th>
+          </tr>
+        </thead>
+        <tbody><!-- injected --></tbody>
+      </table>
+    </section>
+
+    <!-- ---------------- PRIVACY ACKNOWLEDGEMENT ---------------- -->
+    <section class="form-section privacy-section">
+      <hr />
+      <label class="checkbox-line">
+        <input type="checkbox" id="privacy-checkbox" disabled />
+        I understand that the <a href="#" onclick="return false;">Privacy Notice</a> applies to the
+        personal information collected in this document.
+      </label>
+    </section>
+
+    <!-- spacer pushes the footer to the bottom of the page, echoing the
+         large trailing whitespace on page 2 of the reference PDF -->
+    <div class="page2-spacer" aria-hidden="true"></div>
+
+    <!-- ---------------- FOOTER — PAGE 2 ---------------- -->
+    <footer class="doc-footer">
+      <span class="footer-app-id">Worker App ID: <span class="value"><!-- injected --></span></span>
+      <span class="footer-right">
+        <span class="footer-submitted">Submitted: <span class="value"><!-- injected --></span></span>
+        <span class="footer-page">Page 2 of <span class="footer-page-total"><!-- injected --></span></span>
+      </span>
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,382 @@
+/* =============================================================================
+   style.css — Worker Progress Report
+   =============================================================================
+   Organized into:
+     1. Reset / base
+     2. Layout shell
+     3. Header / claim box
+     4. Form controls (checkbox groups, fill lines, freeform boxes)
+     5. Pain scale
+     6. Footer / certification
+     7. Responsive rules
+     8. Print rules
+============================================================================= */
+
+/* ---------------------------- 1. Reset / base ---------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+  background: #e9e9ec;
+  line-height: 1.35;
+}
+
+h1, h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+a {
+  color: #2b4d8f;
+}
+
+/* ---------------------------- 2. Layout shell ----------------------------- */
+
+.demo-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background: #22252b;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+}
+
+.demo-toolbar button {
+  cursor: pointer;
+  border: 1px solid #565a63;
+  background: #33363d;
+  color: #fff;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.demo-toolbar button:hover {
+  background: #454952;
+}
+
+.page {
+  width: 816px; /* 8.5in at 96dpi */
+  margin: 1.5rem auto;
+  background: #fff;
+  padding: 24px 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* ---------------------------- 3. Header ------------------------------------ */
+
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  object-fit: contain;
+}
+
+.org-address {
+  font-size: 0.85rem;
+  color: #1a1a1a;
+}
+
+.title-block {
+  text-align: right;
+  margin-top: 0;
+}
+
+.title-block h1 {
+  font-size: 1.65rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.claim-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.claim-box {
+  display: flex;
+  align-items: center;
+  border: 2px solid #1a1a1a;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  min-width: 180px;
+}
+
+.tag-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1a1a1a;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.intro-line {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+}
+
+.worker-name {
+  color: #2b4d8f;
+  font-weight: bold;
+}
+
+/* ---------------------------- 4. Form controls ----------------------------- */
+
+.form-section {
+  margin-bottom: 1rem;
+}
+
+.form-section h2 {
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.checkbox-grid {
+  border: 1px solid #1a1a1a;
+  padding: 0.4rem 0.5rem 0.5rem;
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.checkbox-grid.four-col,
+.checkbox-grid.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem 1rem;
+}
+
+.checkbox-grid legend {
+  font-size: 0.75rem;
+  padding: 0 0.35rem;
+}
+
+.checkbox-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.checkbox-line input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #1a1a1a;
+  border-radius: 0;
+  margin-top: 0.1rem;
+  position: relative;
+  background-color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-line input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.other-line,
+.inline-date {
+  grid-column: 1 / -1;
+  flex-wrap: wrap;
+}
+
+.fill-line {
+  display: inline-block;
+  min-width: 140px;
+  border-bottom: 1px solid #1a1a1a;
+  color: #2b4d8f;
+  font-weight: 600;
+  padding: 0 0.25rem;
+}
+
+.fill-line.short {
+  min-width: 90px;
+}
+
+.fill-line.long {
+  min-width: 260px;
+}
+
+.fill-line:empty::after {
+  content: "\00a0";
+}
+
+.fill-line:empty::after {
+  content: "\00a0";
+}
+
+.inline-field {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: top;
+  margin: 0 0.25rem;
+}
+
+.inline-field .fill-line {
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.inline-field .field-caption {
+  font-size: 0.72rem;
+  color: #333;
+  margin-top: 2px;
+  margin-left: 0;
+}
+
+.field-caption {
+  font-size: 0.72rem;
+  color: #333;
+  margin-left: 0.35rem;
+}
+
+.field-line {
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+.freeform-box {
+  border: 1px solid #1a1a1a;
+  padding: 0.4rem 0.5rem;
+  margin: 0.4rem 0;
+  min-height: 2rem;
+}
+
+.freeform-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.freeform-value {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #2b4d8f;
+  min-height: 1.1em;
+}
+
+.freeform-value:empty::before {
+  content: "\00a0";
+}
+
+/* ---------------------------- 5. Pain scale --------------------------------- */
+
+.pain-scale {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: start;
+  gap: 0.6rem 2rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------------------------- 6. Footer / certification --------------------- */
+
+.doc-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  border-top: none;
+}
+
+.doc-footer > span:first-child {
+  text-align: left;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.certification-text {
+  font-size: 0.82rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Removed responsive media queries to force fixed PDF layout */
+
+/* ---------------------------- 8. Print styles --------------------------------- */
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .no-print,
+  .demo-toolbar {
+    display: none !important;
+  }
+
+  .page {
+    box-shadow: none;
+    margin: 0;
+    width: 816px;
+    padding: 0.25in;
+    min-height: auto;
+    page-break-after: always;
+  }
+
+  .page:last-of-type {
+    page-break-after: auto;
+  }
+
+  .form-section,
+  .freeform-box,
+  .doc-header,
+  .doc-footer {
+    break-inside: avoid;
+  }
+
+  @page {
+    size: letter portrait;
+    margin: 0.25in;
+  }
+}
