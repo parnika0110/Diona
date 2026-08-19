@@ -85,9 +85,10 @@ a {
 
 .page {
   width: 816px; /* 8.5in at 96dpi */
+  min-height: 1056px; /* 11in at 96dpi */
   margin: 1.5rem auto;
   background: #fff;
-  padding: 24px 30px;
+  padding: 24px 30px 60px 30px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
   position: relative;
 }
@@ -343,9 +344,13 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: end;
-  margin-top: 1rem;
   font-size: 0.75rem;
-  border-top: none;
+  position: absolute;
+  bottom: 24px;
+  left: 30px;
+  right: 30px;
+  border-top: 1px solid #1a1a1a;
+  padding-top: 0.25rem;
 }
 
 .doc-footer > span:first-child {
