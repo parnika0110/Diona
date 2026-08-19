@@ -177,18 +177,20 @@
 
     <!-- ---------------- MEDICAL TREATMENT ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid">
+      <fieldset class="checkbox-grid grid-2-col">
         <legend>Select one:</legend>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-not-continuing-treatment" />
-          I am not continuing to receive medical treatment for my workplace injury.
+          <span>I am not continuing to<br/>receive medical treatment for<br/>my workplace injury.</span>
         </label>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-continuing-treatment" />
-          I am continuing to receive medical treatment for my workplace injury from:
-          <span class="inline-field">
-            <span class="fill-line long" id="provider-type"><!-- injected --></span>
-            <span class="field-caption">(Medical Provider Type)</span>
+          <span style="display: flex; align-items: flex-end;">
+            <span style="margin-right: 0.5rem;">I am continuing to receive<br/>medical treatment for my<br/>workplace injury from:</span>
+            <span class="inline-field">
+              <span class="fill-line long" id="provider-type"><!-- injected --></span>
+              <span class="field-caption">(Medical Provider Type)</span>
+            </span>
           </span>
         </label>
       </fieldset>
@@ -212,6 +214,11 @@
           <span class="fill-line short" id="next-treatment-date"><!-- injected --></span>
           <span class="field-caption">Date</span>
         </span>
+        from
+        <span class="inline-field">
+          <span class="fill-line long" id="next-treatment-provider"><!-- injected --></span>
+          <span class="field-caption">(Medical Provider Name)</span>
+        </span>
       </p>
 
       <p class="field-line">
@@ -225,15 +232,20 @@
 
     <!-- ---------------- MEDICATION ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid">
+      <fieldset class="checkbox-grid grid-2-col">
         <legend>Select one:</legend>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-taking-medication" /> I am not taking medication for my workplace injury.</label>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-not-taking-medication" />
+          <span>I am not taking medication<br/>for my workplace injury.</span>
+        </label>
         <label class="checkbox-line">
           <input type="checkbox" disabled id="cb-taking-medication" />
-          I am taking medication for my workplace injury:
-          <span class="inline-field">
-            <span class="fill-line long" id="medication-name"><!-- injected --></span>
-            <span class="field-caption">(Name of prescribed medication)</span>
+          <span style="display: flex; flex-direction: column; width: 100%;">
+            <span>I am taking medication for my<br/>workplace injury:</span>
+            <span class="inline-field" style="margin-top: 1.5rem; align-items: flex-end;">
+              <span class="fill-line long" id="medication-name" style="width: 100%;"><!-- injected --></span>
+              <span class="field-caption">(Name of prescribed medication)</span>
+            </span>
           </span>
         </label>
       </fieldset>
@@ -241,10 +253,16 @@
 
     <!-- ---------------- HOME EXERCISES ---------------- -->
     <section class="form-section">
-      <fieldset class="checkbox-grid">
+      <fieldset class="checkbox-grid grid-2-col">
         <legend>Select one:</legend>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-not-doing-exercises" /> I am not doing home exercises for my workplace injury.</label>
-        <label class="checkbox-line"><input type="checkbox" disabled id="cb-doing-exercises" /> I am doing home exercises for my workplace injury.</label>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-not-doing-exercises" />
+          <span>I am not doing home exercises for my workplace<br/>injury.</span>
+        </label>
+        <label class="checkbox-line">
+          <input type="checkbox" disabled id="cb-doing-exercises" />
+          <span>I am doing home exercises for my workplace<br/>injury.</span>
+        </label>
       </fieldset>
       <div class="freeform-box box-tall">
         <p class="freeform-label">List the exercises you are doing:</p>
@@ -273,25 +291,21 @@
   ==================================================================== -->
   <main id="page-3" class="page">
     <section class="form-section certification-section">
-      <p class="certification-text">
-        I certify that the information given on this form is true, correct and complete to the
+      <label class="checkbox-line certification-text" style="align-items: flex-start; margin-bottom: 1.5rem;">
+        <input type="checkbox" disabled id="cb-certification" />
+        <span>I certify that the information given on this form is true, correct and complete to the
         best of my knowledge. I agree to notify the Workers Compensation Board of Manitoba (WCB)
         immediately once I return to any form of work and/or employment. I understand that it is
         an offence to knowingly make a false statement to the WCB. I also understand that it is an
         offence to withhold information from WCB which affects my entitlement to compensation
         (e.g., full or partial recovery from injury, ability to return to work, sources of
         additional income, etc.). I understand that refusing to co-operate with, or follow my
-        treatment, may result in the WCB reducing or suspending my benefits.
-      </p>
-
-      <label class="checkbox-line">
-        <input type="checkbox" disabled id="cb-certification" />
-        I certify that the information given on this form is true, correct and complete.
+        treatment, may result in the WCB reducing or suspending my benefits.</span>
       </label>
 
-      <label class="checkbox-line">
+      <label class="checkbox-line" style="margin-top: 1rem;">
         <input type="checkbox" disabled id="cb-privacy" />
-        <span>I understand that the <a href="#" onclick="return false;">Privacy Notice</a> applies to the
+        <span>Iunderstand that the <a href="#" onclick="return false;">Privacy Notice</a> applies to the
         personal information collected in this document.</span>
       </label>
     </section>

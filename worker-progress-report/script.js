@@ -113,6 +113,7 @@ function renderMedicalTreatment(data) {
   setText("last-treatment-date", mt.lastTreatmentDate);
   setText("last-treatment-provider", mt.lastTreatmentProviderName);
   setText("next-treatment-date", mt.nextTreatmentDate);
+  setText("next-treatment-provider", mt.nextTreatmentProviderName);
   setChecked("cb-chiro-physio", !!mt.isChiroOrPhysio);
   setText("treatment-frequency", mt.isChiroOrPhysio ? mt.frequency : "");
 }
